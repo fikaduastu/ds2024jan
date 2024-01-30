@@ -1,12 +1,13 @@
 class SinglyLinkedListRunner{
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.lastIn(5);
-        sll.lastIn(4);
-        sll.lastIn(3);
-        sll.lastIn(2);
-        sll.lastIn(1);
-        sll.lastIn(0);
+        sll.firstIn(5);
+        sll.firstIn(4);
+        sll.firstIn(3);
+        sll.firstIn(2);
+        sll.firstIn(1);
+        sll.firstIn(0);
+        sll.firstOut();
         sll.traverseFront();
     }
 }
@@ -33,8 +34,27 @@ class SinglyLinkedList{
             travNode.next = temp;
         }
     }
-    public void firstIn(int data){}
-    public void firstOut(){}
+    public void firstIn(int data){
+        Node temp = new Node(data);
+        if (head == null){
+            head = temp;
+            return;
+        }
+        else {
+            temp.next = head;
+            head = temp;
+        }
+    }
+    public void firstOut(){
+        //deleting the first element 
+        if (head == null){
+            System.out.println("Nothing to Delete!");
+            return;
+        }
+        else {
+            head = head.next;
+        }
+    }
     public void lastOut(){}
     public void searchNode(int data){}
     public void findPosition(int data){}
