@@ -3,12 +3,11 @@ class SinglyLinkedListRunner{
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.firstIn(5);
         sll.firstIn(4);
-        sll.firstIn(3);
         sll.firstIn(2);
         sll.firstIn(1);
-        sll.firstIn(0);
-        sll.firstOut();
+        sll.insertAtPosition(3,3);
         sll.traverseFront();
+
     }
 }
 
@@ -55,10 +54,75 @@ class SinglyLinkedList{
             head = head.next;
         }
     }
-    public void lastOut(){}
-    public void searchNode(int data){}
-    public void findPosition(int data){}
-    public void insertAtPosition(int data,int position){}
+    public void lastOut(){
+        //delete the last element
+        Node travNode = head;
+        if (travNode == null){
+            System.out.println("NO DATA AVAILABLE");
+            return;
+        }
+        else {
+            Node lastNode = head;
+                while (travNode.next != null){
+                    lastNode = travNode;
+                    travNode = travNode.next;
+                }
+                lastNode.next = null;
+        }
+    }
+    public void searchNode(int data){
+        if (head == null){
+            System.out.println("NO DATA");
+            return;
+        }
+        else {
+            Node travNode = head;
+            while (travNode != null){
+             if (travNode.data == data){
+                    System.out.println("I found it");
+                    return;
+                }
+                else travNode = travNode.next;
+            }
+
+        }
+    }
+    public void findPosition(int data){
+        int position = 1;
+        if (head == null){
+            System.out.println("NO DATA");
+            return;
+        }
+        else {
+            Node trNode = head;
+            while (trNode != null){
+                if (trNode.data == data){
+                    System.out.println("AT POSITION "+position);
+                    return;
+                }
+                else{
+                    ++position;
+                    trNode = trNode.next;
+                }
+            }
+            System.out.println("NO POSITION ");
+        }
+    }
+    public void insertAtPosition(int data,int position){
+        //N.B I assumed the position started at position 1
+        Node temp = new Node(data);
+        Node trNode = head;
+        Node leftNode = head;
+        int initialPosition = 1;
+        while (initialPosition < position) {
+            leftNode = trNode;
+            trNode = trNode.next;
+            ++initialPosition;
+
+        }
+        leftNode.next = temp;
+        temp.next = trNode;
+    }
     public void traverseFront(){
         Node travNode = head;
         if (travNode == null){
