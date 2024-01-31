@@ -6,7 +6,7 @@ class SinglyLinkedListRunner{
         sll.firstIn(2);
         sll.firstIn(1);
         sll.insertAtPosition(3,3);
-        sll.traverseFront();
+        sll.printReverse();
 
     }
 }
@@ -18,6 +18,16 @@ class SinglyLinkedList{
         head = null;
     }
 
+    public void printReverse(){
+        printReverseOrder(head);
+    }
+    public void printReverseOrder(Node head){
+        if (head == null){
+            return;
+        }
+        printReverseOrder(head.next);
+        System.out.println(head.data);
+    }
     public void lastIn(int data){
         Node temp = new Node(data);
         Node travNode = head;
